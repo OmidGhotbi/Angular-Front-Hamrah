@@ -1,0 +1,153 @@
+<!-- <img src="/static/logo.jpg" /> -->
+<!-- <img src="/logo.jpg" /> -->
+
+<form
+  [formGroup]="addressForm"
+  novalidate
+  (ngSubmit)="onSubmit()"
+  *ngIf="submitted == false"
+>
+  <mat-card class="shipping-card" [dir]="rtl" class="rtl">
+    <mat-card-header>
+      <mat-card-title class="center" style="font-size: xx-large;">
+        فرم درخواست شرکت در جلسات مختلف همراه همیشه
+      </mat-card-title>
+      <mat-card-subtitle style="font-size: large;">
+        با عرض سلام،
+      </mat-card-subtitle>
+
+      <mat-card-subtitle style="font-size: large;">
+        لطفا اطلاعات خود را در فرم زیر وارد کرده و ارسال نمایید. لینک دعوت به
+        جلسه به همراه تاریخ و زمان برای شما ایمیل خواهد شد.
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="نام"
+              required
+              [formControl]="firstName"
+            />
+            <mat-error
+              *ngIf="addressForm.controls['firstName'].hasError('required')"
+            >
+              First name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="نام خانوادگی"
+              required
+              [formControl]="lastName"
+            />
+            <mat-error
+              *ngIf="addressForm.controls['lastName'].hasError('required')"
+            >
+              Last name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="علت درخواست"
+              required
+              [formControl]="reason"
+            />
+            <mat-error
+              *ngIf="addressForm.controls['reason'].hasError('required')"
+            >
+              Reason is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="شماره موبایل" [formControl]="mobile" />
+            <mat-error
+              *ngIf="addressForm.controls['mobile'].hasError('required')"
+            >
+              Mobile is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="آدرس ایمیل"
+              required
+              [formControl]="email"
+            />
+            <mat-error
+              *ngIf="addressForm.controls['email'].hasError('required')"
+            >
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="کشور"
+              required
+              [formControl]="country"
+            />
+            <mat-error
+              *ngIf="addressForm.controls['country'].hasError('required')"
+            >
+              Country is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="شهر محل سکونت"
+              required
+              [formControl]="city"
+            />
+            <mat-error
+              *ngIf="addressForm.controls['city'].hasError('required')"
+            >
+              City is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="center">
+      <button mat-raised-button color="primary" type="submit">ارسال فرم</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+<mat-card
+  class="shipping-card"
+  [dir]="rtl"
+  class="center"
+  *ngIf="submitted == true"
+>
+  <mat-card-header>
+    <mat-card-title>
+      درخواست شما با موفقیت ارسال شد
+    </mat-card-title>
+  </mat-card-header>
+</mat-card>
